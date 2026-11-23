@@ -16,6 +16,18 @@ import org.json.JSONObject
 import kotlin.math.roundToInt
 
 object DeviceTools {
+    // Declared first: OpenSettings reads it while `domain` below is being initialised.
+    private val pages = linkedMapOf(
+        "wifi" to Settings.ACTION_WIFI_SETTINGS,
+        "bluetooth" to Settings.ACTION_BLUETOOTH_SETTINGS,
+        "display" to Settings.ACTION_DISPLAY_SETTINGS,
+        "sound" to Settings.ACTION_SOUND_SETTINGS,
+        "battery" to Intent.ACTION_POWER_USAGE_SUMMARY,
+        "location" to Settings.ACTION_LOCATION_SOURCE_SETTINGS,
+        "apps" to Settings.ACTION_APPLICATION_SETTINGS,
+        "general" to Settings.ACTION_SETTINGS,
+    )
+
     val domain = Domain(
         name = "phone_controls",
         routerDescription = "Flashlight, volume, battery level, and opening system settings like wifi or bluetooth.",
@@ -71,16 +83,6 @@ object DeviceTools {
         }
     }
 
-    private val pages = linkedMapOf(
-        "wifi" to Settings.ACTION_WIFI_SETTINGS,
-        "bluetooth" to Settings.ACTION_BLUETOOTH_SETTINGS,
-        "display" to Settings.ACTION_DISPLAY_SETTINGS,
-        "sound" to Settings.ACTION_SOUND_SETTINGS,
-        "battery" to Intent.ACTION_POWER_USAGE_SUMMARY,
-        "location" to Settings.ACTION_LOCATION_SOURCE_SETTINGS,
-        "apps" to Settings.ACTION_APPLICATION_SETTINGS,
-        "general" to Settings.ACTION_SETTINGS,
-    )
 
     object OpenSettings : Tool(
         name = "open_settings",
