@@ -1,0 +1,14 @@
+.gradle/
+build/
+/local.properties
+/captures/
+.idea/
+*.iml
+.DS_Store
+.cxx/
+.externalNativeBuild/
+# Cactus engine binaries are fetched by scripts/fetch_engine.sh, not committed
+/engine/
+/.engine-venv/
+*.keystore
+*.jks
